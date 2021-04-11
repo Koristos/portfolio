@@ -1,0 +1,1 @@
+mvn install:install-file -DgroupId=ru.Koristos -DartifactId=RepoCommonLib -Dversion=1.21 -Dfile=RepoCommonLib-1.21-jar-with-dependencies.jar -Dpackaging=jar -DgeneratePom=true

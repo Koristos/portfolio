@@ -1,0 +1,8 @@
+2021-04-12 02:11:58,708 INFO r.K.ClientModuleManager [main] line 54 -> App started. 
+2021-04-12 02:11:58,728 INFO r.K.ClientConfigProcessor [main] line 69 -> Network settings initialized: 127.0.0.1 | 7777 
+2021-04-12 02:11:59,242 INFO r.K.RepoClient [pool-2-thread-2] line 93 -> Trying to connect server... 
+2021-04-12 02:12:09,569 INFO r.K.InputCommandAnalyser [pool-2-thread-3] line 53 -> New command input: login user1 123 
+2021-04-12 02:12:09,577 INFO r.K.InputCommandAnalyser [pool-2-thread-3] line 138 -> Trying to login 
+2021-04-12 02:12:09,581 INFO r.K.RepoEncoder [nioEventLoopGroup-2-1] line 51 -> Byte package encoded and flushed. 
+2021-04-12 02:12:10,063 INFO r.K.RepoDecoderClient [nioEventLoopGroup-2-1] line 36 -> Byte package arrived. 
+2021-04-12 02:12:10,064 INFO r.K.ClientCommandReader [pool-2-thread-3] line 69 -> New message from server arrived: true%%%Welcome back! 
