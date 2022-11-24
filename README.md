@@ -33,6 +33,7 @@ This app is desined to make rutine work of MICE managers faster and easear:<br>
 - Jquery
 - Bootstrap
 - Log4j
+- JUnit
 - Swagger
 - JAXB
 
@@ -46,7 +47,10 @@ A small game for fun - spaceship arcade shooter - available both at desscktop an
 asfaf
 <hr>
 <h2><i>Flight Sorter</i></h2>
-afsaf
+Just an old small task about how to sort flights
+<h3>Stack</h3>
+- Java 11
+- JUnit
 <hr>
 
 
