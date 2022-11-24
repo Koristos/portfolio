@@ -56,9 +56,9 @@ This is an experiment with low-level java programming - a project of console inp
 - settings configure by console input on client side;<br>
 <h3>Stack</h3>
 Java 11
-Netty (client-server connection, own encoding)
-MySql
-Log4j
+- Netty (client-server connection, own encoding)
+- MySql
+- Log4j
 <hr>
 <h2><i>Flight Sorter</i></h2>
 Just an old small task about how to sort flights
