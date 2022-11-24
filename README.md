@@ -44,7 +44,21 @@ A small game for fun - spaceship arcade shooter - available both at desscktop an
 - LibGDX
 <hr>
 <h2><i>Remote Repo</i></h2>
-asfaf
+This is an experiment with low-level java programming - a project of console input client-server remote repository, that allows:
+- file storage on server side;<br>
+- remote repository file list view;<br>
+- file uploading/downloading with no file length restrictions;<br>
+- length-based check of file transmission;<br>
+- file name occupied check with rewrite confirmation;<br>
+- file managing (rename, delete) in remote repository;<br>
+- multiple user connection with separate repositories;<br>
+- settings configure with separate config file;<br>
+- settings configure by console input on client side;<br>
+<h3>Stack</h3>
+Java 11
+Netty (client-server connection, own encoding)
+MySql
+Log4j
 <hr>
 <h2><i>Flight Sorter</i></h2>
 Just an old small task about how to sort flights
