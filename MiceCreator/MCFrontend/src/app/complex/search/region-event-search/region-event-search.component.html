@@ -1,0 +1,84 @@
+<div>
+  <h1>ПОИСК ДАННЫХ ПО РЕГИОНАЛЬНЫМ ЭВЕНТАМ</h1>
+  <div class="row py-2">
+    <div class="col-12">
+      <div>
+        <div class="pick-elem pick-item">
+          <div class="form-list">
+            <label>Региональная услуга</label>
+            <input [value]="regionService.name" class="form-control form-control-lg but-inp" type="text" placeholder="Выберите региональную услугу"
+                   (click)="findHotelService()" readonly>
+          </div>
+          <div class="form-list">
+            <label>В регионе</label>
+            <input [value]="region.name" class="form-control form-control-lg but-not" type="text" placeholder="Не указано" readonly>
+          </div>
+        </div>
+        <div class="form-list pick-date">
+          <label>С даты</label>
+          <div class="input-group date" data-provide="datepicker">
+            <input type="date" class="form-control" required [(ngModel)]="regEventSearchParams.firstDate">
+            <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-list pick-date">
+          <label>По дату</label>
+          <div class="input-group date" data-provide="datepicker">
+            <input type="date" class="form-control" required [(ngModel)]="regEventSearchParams.lastDate">
+            <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-list pick-date">
+          <label>Дата создания с</label>
+          <div class="input-group date" data-provide="datepicker">
+            <input type="date" class="form-control" required [(ngModel)]="regEventSearchParams.firstDateOfCreation">
+            <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-list pick-date">
+          <label>Дата создания по</label>
+          <div class="input-group date" data-provide="datepicker">
+            <input type="date" class="form-control" required [(ngModel)]="regEventSearchParams.secondDateOfCreation">
+            <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="search()">Найти региональные эвенты</button>
+  </div>
+  <div class="col-12 last-div">
+    <h2 [hidden]="!isSearchCommitted || regionEventList.length != 0">По заданным параметрам региональные эвенты не найдены</h2>
+    <table class="table table-bordered my-2" [hidden]="!isSearchCommitted || regionEventList.length == 0">
+      <thead>
+      <tr>
+        <th scope="col">Номер</th>
+        <th scope="col">Региональная услуга</th>
+        <th scope="col">Дата эвента</th>
+        <th scope="col">Кол-во человек</th>
+        <th scope="col">Цена нетто</th>
+        <th scope="col">Дата создания</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let regionEventElement of regionEventList">
+        <th scope="row">{{regionEventList.indexOf(regionEventElement) + 1}}</th>
+        <td>{{regionEventElement.service.name}}</td>
+        <td>{{dateToPattern(regionEventElement.eventDate)}}</td>
+        <td>{{regionEventElement.pax}}</td>
+        <td>{{regionEventElement.nettoPrice}}</td>
+        <td>{{regionEventElement.creationDate}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

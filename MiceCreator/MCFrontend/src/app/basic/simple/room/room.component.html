@@ -1,0 +1,89 @@
+<div>
+  <h1>{{title}}</h1>
+  <button type="submit" class="btn btn-warning" (click)="enableEdit()" [disabled]="editEnabled">Редактировать данные</button>
+  <button type="submit" class="btn btn-danger side-button" (click)="deleteConfirm()" [hidden]="room.id == null || !isDeleteOn">Удалить тип комнаты</button>
+  <div class="row py-2">
+    <div class="col-12">
+
+      <label>Страна</label>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required [(ngModel)]="countryId"
+              (ngModelChange)="getRegionsWithDrop()"
+              [disabled]="!editEnabled">
+        <option selected value=0>Выберите страну...</option>
+        <option *ngFor="let country_option of countryList" [value]="country_option.id">{{country_option.name}}</option>
+      </select>
+
+      <label>Регион</label>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required [(ngModel)]="regionId"
+              (ngModelChange)="getLocationsWithDrop()"
+              [disabled]="countryId == 0 || !editEnabled">
+        <option selected value=0>Выберите регион...</option>
+        <option *ngFor="let region_option of regionList" [value]="region_option.id">{{region_option.name}}</option>
+      </select>
+
+      <label>Локация</label>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required [(ngModel)]="locationId"
+              (ngModelChange)="getHotelsWithDrop()"
+              [disabled]="regionId == 0 || !editEnabled ">
+        <option selected value=0>Выберите локацию...</option>
+        <option *ngFor="let location_option of locationList" [value]="location_option.id">{{location_option.name}}</option>
+      </select>
+
+      <label>Отель</label>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required [(ngModel)]="room.hotelId"
+              [disabled]="locationId == 0 || !editEnabled">
+        <option selected value=0>Выберите отель...</option>
+        <option *ngFor="let hotel_option of hotelList" [value]="hotel_option.id">{{hotel_option.name}}</option>
+      </select>
+
+      <form (ngSubmit)="save()">
+        <div class="form-group">
+          <label>Название типа комнаты</label>
+          <input [(ngModel)]="room.name" type="text" class="form-control" id="name" name="name" placeholder="Введите название типа комнаты"
+                 [disabled]="!editEnabled">
+        </div>
+
+        <div class="form-group">
+          <label>Описание типа комнаты</label>
+          <textarea [(ngModel)]="room.description" rows="10" class="form-control" id="description" name="description"
+                    placeholder="Введите описание типа комнаты" [disabled]="!editEnabled"></textarea>
+        </div>
+
+        <div class="mb-3 block-img">
+          <label for="formFile1" class="form-label">Фото номера 1</label>
+          <div>
+            <div class="form-list-two fl-long">
+              <input class="form-control imageOne" accept=".jpg" type="file" id="formFile1" (change)="onFileChanged($event)" [disabled]="!editEnabled || room.id == null">
+            </div>
+            <div class="form-list-two fl-short">
+              <a class="btn but btn-danger" (click)="deleteImage(1)" [hidden]="!editEnabled || room.id == null"><i class="far fa-trash-alt"> Удалить </i></a>
+            </div>
+          </div>
+          <div class="img-div">
+            <img [src]="imageOneUrl" class="img-cont" [hidden]="imageOneUrl == null">
+          </div>
+        </div>
+
+        <div class="mb-3 block-img">
+          <label for="formFile2" class="form-label">Фото номера 2</label>
+          <div>
+            <div class="form-list-two fl-long">
+              <input class="form-control imageTwo" type="file" id="formFile2" (change)="onFileChanged($event)" [disabled]="!editEnabled || room.id == null">
+            </div>
+            <div class="form-list-two fl-short">
+              <a class="btn but btn-danger" (click)="deleteImage(2)" [hidden]="!editEnabled || room.id == null"><i class="far fa-trash-alt"> Удалить </i></a>
+            </div>
+          </div>
+          <div class="img-div">
+            <img [src]="imageTwoUrl" class="img-cont" [hidden]="imageTwoUrl == null">
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary save" [disabled]="!editEnabled">Сохранить изменения</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
